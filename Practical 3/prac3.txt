@@ -1,0 +1,75 @@
+-> take input from user
+declare  
+ x number(10);
+begin  
+ dbms_output.put_line('Enter Number  : ' || :x);
+end;
+
+-> 1 
+declare  
+ x number(10);
+ flag NUMBER;
+ sal NUMBER;
+ hra NUMBER;
+ da NUMBER;
+ net NUMBER;
+
+begin  
+ dbms_output.put_line('Enter Employee Number  : ' || :x);
+ select count(*) into flag from employee where empno = :x;
+ select salary into sal from employee where empno = :x;
+if flag > 0 then
+   dbms_output.put_line('Existed');
+   hra := sal * 0.10;
+   da := sal * 0.60;
+   net := sal + hra + da;
+   dbms_output.put_line('HRA : ' || hra);
+   dbms_output.put_line('DA : ' || da);
+   dbms_output.put_line('NET SALARY  : ' || net);
+else 
+    dbms_output.put_line('Not');
+end if;
+end;
+
+-> 2
+declare  
+ x NUMBER;
+ flag NUMBER;
+ sal NUMBER;
+
+begin  
+ dbms_output.put_line('Enter Employee Number  : ' || :x);
+ select count(*) into flag from employee where empno = :x;
+ select salary into sal from employee where empno = :x;
+
+if flag > 0 then
+ if sal < 10000 then
+   dbms_output.put_line('Low Salary');
+ elsif sal > 10000 and sal < 30000 then
+   dbms_output.put_line('Medium Salary');
+ elsif  sal > 30000 and sal < 60000 then
+   dbms_output.put_line('High Salary');
+ elsif  sal > 60000 then
+   dbms_output.put_line('Very High Salary');
+ else
+   dbms_output.put_line('Not Found');
+ end if;
+else
+ dbms_output.put_line('Not Found');
+end if;
+end;
+
+-> 4
+DECLARE
+num number := 12345;
+rev number := 0;
+
+begin
+ while num > 0 LOOP
+
+   rev := (rev*10) + mod(num,10); 
+   num:=floor(num/10);  
+ END LOOP;
+ dbms_output.put_line('Reverse Number ' || rev);
+end;
+
