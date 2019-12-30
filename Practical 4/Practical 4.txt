@@ -9,7 +9,21 @@ Execute this block using this statement
 begin
  Welcome;
 end;
+--------------------------------------------------
+using declare 
 
+DECLARE
+ no number := 6;
+PROCEDURE double as 
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(no);
+END;
+ 
+BEGIN
+  double;  
+END;
+
+------------------------------------------------------
 -> 2 
 create or replace procedure  data_insert(empno IN number,ename IN varchar,salary IN number,deptno IN number,des IN varchar) as
 begin
