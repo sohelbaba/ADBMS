@@ -1,0 +1,61 @@
+--simple hello ---
+CREATE OR REPLACE PROCEDURE Welcome
+AS
+BEGIN
+    dbms_output.put_line('Hello World!'); 
+END; 
+
+Execute this block using this statement
+begin
+ Welcome;
+end;
+
+-> 2 
+create or replace procedure  data_insert(empno IN number,ename IN varchar,salary IN number,deptno IN number,des IN varchar) as
+begin
+ insert into employee values(empno,ename,salary,deptno,des);
+end;
+
+create or replace procedure  data_delete(eno IN number) as
+begin
+ delete from employee where empno = eno;
+end;
+
+create or replace procedure  data_insert(empno IN number,ename IN varchar,salary IN number,deptno IN number,des IN varchar) as
+begin
+ update employee set ename = ename , salary = salary, deptno = deptno , DESIGNATION = des where empno = empno;
+end;
+ 
+-> 3
+create or replace procedure findmax(x IN number,y IN number ,z IN number) as
+BEGIN         
+IF x > y and x > z THEN         
+     dbms_output.put_line('Maximum ' || x);
+ELSIF y > x and y > z then
+     dbms_output.put_line('Maximum ' || y);        
+else
+     dbms_output.put_line('Maximum ' || z);       
+END IF; 
+END;
+
+-> 4
+create or replace procedure CalArea(shapename IN varchar,radius IN number,length IN number,base IN number,PI IN number) as
+BEGIN         
+  case shapename
+   when 'circle' then dbms_output.put_line(PI*radius*radius);
+   when 'squre' then dbms_output.put_line(length * length);
+   when 'rect' then dbms_output.put_line(length * base);
+   when 'tringle' then dbms_output.put_line(0.5 * length * base);
+  end case;
+END;
+
+output
+begin
+ CalArea('circle',10,2,3,3.14);
+ CalArea('squre' ,10,2,3,3.14);
+ CalArea('rect' ,10,2,3,3.14);
+ CalArea('tringle' ,10,2,3,3.14);
+end;
+
+-> 5
+
