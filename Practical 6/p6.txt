@@ -1,0 +1,81 @@
+--package create defination----
+CREATE or replace PACKAGE cust_sal AS    
+PROCEDURE find_sal(msg varchar); 
+END cust_sal;
+
+--package body-------------
+create or replace package body cust_sal as
+PROCEDURE find_sal(msg varchar) as
+begin
+ dbms_output.put_line(msg);
+ end find_sal;
+end cust_sal;
+
+----execution of package----
+begin
+ cust_sal.find_sal('hello Good Morning');
+end;
+
+--1->
+
+create or replace package emp_data as 
+function emp_details(empid in number) return varchar;
+function emp_sal(empid in number) return varchar;
+end emp_data;
+
+create or replace package body emp_data as
+ function emp_details(empid in number) return varchar as
+ name varchar(20);
+begin
+  select ename into name from employee where empno = empid;
+  return name;
+end emp_details;
+
+ function emp_sal(empid in number) return varchar as
+ sal number;
+begin
+ select sum(salary) into sal from employee where empno = empid;
+ return sal;
+end emp_sal;
+end emp_data;
+
+begin 
+ dbms_output.put_line(emp_data.emp_details(5));
+  dbms_output.put_line(emp_data.emp_sal(5));
+end;
+
+--2->
+create or replace package emp_mgmt as
+ procedure insert_data(empno number,name varchar,salary number,deptno number,desg varchar,hdate date);
+ procedure update_data(empno number,name varchar,salary number,deptno number,desg varchar,hdate date);
+ procedure fetch_data(empno number);
+end emp_mgmt;
+
+create or replace package body emp_mgmt as
+ procedure insert_data(empno number,name varchar,salary number,deptno number,desg varchar,hdate date) as
+ begin
+    insert into employee values(empno,name,salary,deptno,desg,hdate);
+    dbms_output.put_line('data inserted.');
+ end insert_data;
+
+ procedure update_data(empno number,name varchar,salary number,deptno number,desg varchar,hdate date) as
+ begin
+   update employee set ename = name,salary = salary,designation = desg,hire_date = hdate where empno = empno;
+   dbms_output.put_line('data Updated.'); 
+ end update_data;
+
+ procedure fetch_data(empno number) as
+ name varchar(20);
+ salnumber;
+ dept number;
+ des varchar(10);
+ hdate date;
+ begin
+  select ename into name, salary into sal, deptno into dept, designation into des, hire_date into hdate where empno =empno;
+  dbms_output.put_line('Name' || name);
+  dbms_output.put_line('Salary' || sal);
+  dbms_output.put_line('Department'|| dept );
+  dbms_output.put_line('Designation' || des );
+  dbms_output.put_line('Hire Date' || hdate );
+ end fetch_data;
+end emp_mgmt;
