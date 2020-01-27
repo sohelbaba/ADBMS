@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON WITH AJAX & HTML</title>
+</head>
+<body>
+
+<h2>Get data as JSON from a PHP file on the server.</h2>
+<p id="demo"></p>
+</body>
+</html>
+<script>
+	
+	var xmlhttp = new XMLHttpRequest();
+
+	xmlhttp.onreadystatechange = function() {
+  	if (this.readyState == 4 && this.status == 200) {
+    	myObj = JSON.parse(this.responseText);
+    	document.getElementById("demo").innerHTML = myObj[0];
+  		}
+	};
+	xmlhttp.open("GET", "array.txt", true);
+	xmlhttp.send();
+</script>

@@ -1,0 +1,6 @@
+{
+	"name" : "Mohammed sohel",
+	"age"  : 22,
+	"pets" : ["name" , "jony",
+	          "color" , "brown"]
+}
