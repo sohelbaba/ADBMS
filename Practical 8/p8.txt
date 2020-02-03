@@ -1,0 +1,56 @@
+MongoDB Enterprise > db.createCollection("BookData")
+
+MongoDB Enterprise > db.BookData.insert({"title" : "C programing" , "author" : "Balaguruswami" , "publisher" : "TMH" , "Year" : 1997 , "KeyWord" : "prog"})
+
+MongoDB Enterprise > db.BookData.insert({"title" : "C++ programing" , "author" : "m.m.gupta" , "publisher" : "TMH" , "Year" : 2000 , "KeyWord" : "prog"})
+
+MongoDB Enterprise > db.BookData.insert({"title" : "Java" , "author" : "m.n.roy" , "publisher" : "Oxford" , "Year" : 2002 , "KeyWord" : "prog"})
+
+MongoDB Enterprise > db.BookData.insert({"title" : "Fundamentals of programing" , "author" : "Dr. utkarsh" , "publisher" : "Oxford" , "Year" : 2002 , "KeyWord" : "prog"})
+
+MongoDB Enterprise > db.BookData.insert({"title" : "Fundamentals of programing II" , "author" : "Dr. utkarsh & N.M.patil" , "publisher" : "Oxford & TMH" , "Year" : 2005 , "KeyWord" : "prog"})
+
+MongoDB Enterprise > db.BookData.insert({"title" : "Computer works" , "author" : "john devid" , "publisher" : "TMH" , "Year" : 2015 , "KeyWord" : "prog"})
+
+MongoDB Enterprise > db.BookData.insert({"title" : "System Analysis" , "author" : "dravid narayan" , "publisher" : "TMH" , "Year" : 2015 , "KeyWord" : "prog"})
+
+MongoDB Enterprise > db.BookData.insert({"title" : "System Architecture" , "author" : "charli till" , "publisher" : "MNS" , "Year" : 2018 , "KeyWord" : "prog"})
+
+MongoDB Enterprise > db.BookData.insert({"title" : "Python is growing" , "author" : "john Carter" , "publisher" : "MNS & TMH" , "Year" : 2018 , "KeyWord" : "prog"})
+
+MongoDB Enterprise > db.BookData.insert({"title" : "Python is growing - II" , "author" : "john Carter" , "publisher" : "MNS & TMH" , "Year" : 2018 , "KeyWord" : "prog"})
+
+show data - > db.BookData.find()
+
+-> 1 
+MongoDB Enterprise > db.BookData.find({"author": "john Carter"})
+{ "_id" : ObjectId("5e37a5e257a0d631179c336e"), "title" : "Python is growing", "author" : "john Carter", "publisher" : "MNS & TMH", "Year" : 2018, "KeyWord" : "prog" }
+{ "_id" : ObjectId("5e37a5eb57a0d631179c336f"), "title" : "Python is growing - II", "author" : "john Carter", "publisher" : "MNS & TMH", "Year" : 2018, "KeyWord" : "prog" }
+
+-> 2 
+MongoDB Enterprise > db.BookData.find({"Year": 2015})
+{ "_id" : ObjectId("5e37a57757a0d631179c336b"), "title" : "Computer works", "author" : "john devid", "publisher" : "TMH", "Year" : 2015, "KeyWord" : "prog" }
+{ "_id" : ObjectId("5e37a58e57a0d631179c336c"), "title" : "System Analysis", "author" : "dravid narayan", "publisher" : "TMH", "Year" : 2015, "KeyWord" : "prog" }
+
+-> 3
+MongoDB Enterprise > db.BookData.find({"title":"C programing"})
+{ "_id" : ObjectId("5e37a47457a0d631179c3366"), "title" : "C programing", "author" : "Balaguruswami", "publisher" : "TMH", "Year" : 1997, "KeyWord" : "prog" }
+
+-> 4
+MongoDB Enterprise > db.BookData.find({"author" : "sharma", "publisher" : "TMH"})
+
+->5
+MongoDB Enterprise > db.BookData.find({"KeyWord" :  "web"})
+
+-> 6 
+MongoDB Enterprise > db.BookData.update({"year" : 2020} , {$set:{"author" : "Sunil Singh"}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+
+-> 7 
+MongoDB Enterprise > db.BookData.update({"year" : 2018},{"KeyWord" : "advace"} , {$set:{"KeyWord" : "Advaced"}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+
+-> 8 
+MongoDB Enterprise > db.BookData.remove({"name" : "Robert"})
+
+-> 9
