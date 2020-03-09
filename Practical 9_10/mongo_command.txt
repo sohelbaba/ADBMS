@@ -1,0 +1,16 @@
+--> step 1:
+start server(cmd) : 
+D:\softwareinstallation\Mongodb\bin>mongod.exe --dbpath D:\softwareinstallation\Mongodb
+--> step 2:
+start client (cmd): 
+D:\softwareinstallation\Mongodb\bin>mongo.exe 
+
+--> use database
+use dbname
+--> For shwo all collection
+db.showCollection
+
+--> import external database
+mongoimport  --db  student1 --collection student --file D:\softwareinstallation\Mongodb\data\studentdata1.json
+
+--> 
